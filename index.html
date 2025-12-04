@@ -1,402 +1,589 @@
 <!DOCTYPE html>
-    <html lang="et">
+<html lang="en" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rasmus Antsi - Portfoolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Creative Developer & Designer</title>
+  <meta name="description" content="Award-winning creative developer specializing in immersive digital experiences and cutting-edge web solutions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&family=Geist+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-gradient">RA</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Avaleht</a></li>
-                <li><a href="#about" class="nav-link">Minust</a></li>
-                <li><a href="#projects" class="nav-link">Projektid</a></li>
-                <li><a href="#skills" class="nav-link">Oskused</a></li>
-                <li><a href="#contact" class="nav-link">Kontakt</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <!-- Navigation -->
+  <nav id="navigation" class="navigation">
+    <div class="nav-container">
+      <button class="nav-logo" onclick="scrollToSection('hero')">
+        <div class="nav-logo-icon">
+          <svg class="nav-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
         </div>
-    </nav>
+        <span>Portfolio</span>
+      </button>
 
+      <!-- Desktop Menu -->
+      <div class="nav-menu-desktop">
+        <button class="nav-menu-item" onclick="scrollToSection('about')">About</button>
+        <button class="nav-menu-item" onclick="scrollToSection('work')">Work</button>
+        <button class="nav-menu-item" onclick="scrollToSection('skills')">Skills</button>
+        <button class="nav-menu-item" onclick="scrollToSection('contact')">Contact</button>
+      </div>
+
+      <button class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+        <svg id="menu-icon" class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg id="close-icon" class="nav-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-content">
+      <button class="mobile-menu-item" onclick="scrollToSection('about')">About</button>
+      <button class="mobile-menu-item" onclick="scrollToSection('work')">Work</button>
+      <button class="mobile-menu-item" onclick="scrollToSection('skills')">Skills</button>
+      <button class="mobile-menu-item" onclick="scrollToSection('contact')">Contact</button>
+    </div>
+  </div>
+
+  <!-- Particles Background -->
+  <canvas id="particles-canvas" class="particles-canvas"></canvas>
+
+  <!-- Custom Cursor -->
+  <div id="custom-cursor" class="custom-cursor"></div>
+  <div id="custom-cursor-dot" class="custom-cursor-dot"></div>
+
+  <main class="main-content">
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-        </div>
+    <section id="hero" class="hero-section">
+      <div class="container">
         <div class="hero-content">
-            <div class="hero-text fade-in">
-                <h1 class="hero-title">
-                    Tere, ma olen <span class="typing-text"></span><span class="cursor">|</span>
-                </h1>
+          <div class="hero-badge" id="hero-badge">
+            <div class="hero-badge-icon">
+              <div class="hero-badge-dot"></div>
             </div>
-            <div class="hero-buttons fade-in">
-                <a href="#about" class="btn btn-primary">Loe Rohkem</a>
+            <span>Available for freelance work</span>
+            <svg class="hero-badge-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L13.09 8.26L19 9L13.09 9.74L12 16L10.91 9.74L5 9L10.91 8.26L12 2Z"/>
+            </svg>
+          </div>
+
+          <h1 class="hero-title" id="hero-title">
+            <span class="hero-title-gradient">Creative</span>
+            <br>
+            <span>Developer</span>
+            <br>
+            <span class="hero-title-primary">& Designer</span>
+          </h1>
+
+          <p class="hero-description" id="hero-description">
+            Crafting <span class="text-primary">pixel-perfect</span> digital experiences that blend
+            <span class="text-primary">cutting-edge technology</span> with thoughtful design
+          </p>
+
+          <div class="hero-buttons" id="hero-buttons">
+            <button class="btn-primary" onclick="scrollToSection('work')">
+              <span>View My Work</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <polyline points="19 12 12 19 5 12"/>
+              </svg>
+            </button>
+            <button class="btn-secondary" onclick="scrollToSection('contact')">
+              Get in Touch
+            </button>
+          </div>
+
+          <div class="hero-icons" id="hero-icons">
+            <div class="hero-icon-item">
+              <svg class="hero-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
             </div>
+            <div class="hero-icon-item" style="animation-delay: 1s;">
+              <svg class="hero-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <div class="hero-icon-item" style="animation-delay: 2s;">
+              <svg class="hero-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L13.09 8.26L19 9L13.09 9.74L12 16L10.91 9.74L5 9L10.91 8.26L12 2Z"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="hero-scroll" id="hero-scroll">
+            <span>Scroll to explore</span>
+            <div class="hero-scroll-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <polyline points="19 12 12 19 5 12"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-        </div>
+      </div>
+
+      <div class="hero-grid"></div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title scroll-fade-in">
-                Miks mind <span class="gradient-text">oma järgmiseks projektiks</span> valida?
-            </h2>
-            <div class="about-content">
-                <div class="about-image scroll-slide-right">
-                    <div class="image-wrapper">
-                        <img src="img/IMG_2775.jpg" alt="Rasmus Antsi" class="profile-image">
-                        <div class="gradient-border"></div>
-                    </div>
-                </div>
-                <div class="about-text scroll-slide-left">
-                    <p class="about-intro">
-                        Olen kirglik arendaja, kes alustas programmeerimist 7-aastaselt ja on nüüdseks kogunud 
-                        <span class="highlight">8 aastat</span> kogemust koodi kirjutamises. Praegu õpin ja arenen 
-                        edasi <span class="highlight">Voco Kutseharidus Keskuses</span>, kus täiendan oma oskusi 
-                        ja õpin uusi tehnoloogiaid.
-                    </p>
-                    <div class="about-buttons">
-                        <a href="#projects" class="btn btn-primary">Portfoolio</a>
-                        <a href="#" class="btn btn-secondary">Laadi CV alla</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Journey Timeline -->
-            <div class="journey-section scroll-fade-in">
-                <h3 class="journey-title">Minu teekond</h3>
-                <div class="journey-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-year">7 aastat</div>
-                        <div class="timeline-content">
-                            <h4>Algus</h4>
-                            <p>Esimene kokkupuude programmeerimisega</p>
-                        </div>
-                    </div>
-                    <div class="timeline-line"></div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">8 aastat</div>
-                        <div class="timeline-content">
-                            <h4>Kogemus</h4>
-                            <p>Pidev areng ja projektide tegemine</p>
-                        </div>
-                    </div>
-                    <div class="timeline-line"></div>
-                    <div class="timeline-item active">
-                        <div class="timeline-year">Praegu</div>
-                        <div class="timeline-content">
-                            <h4>Voco Kutseharidus Keskus</h4>
-                            <p>Formaalne haridus ja professionaalne areng</p>
-                        </div>
-                    </div>
-                </div>
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-left">
+            <div class="about-badge">
+              <svg class="about-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.17 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.17 8.91 8.26 12 2"/>
+              </svg>
+              <span>About Me</span>
             </div>
 
-            <!-- Stats Grid -->
-            <div class="about-stats-grid scroll-fade-in">
-                <div class="stat-card scroll-scale-in">
-                    <div class="stat-icon">💻</div>
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">Aastat Programmeerimist</div>
-                </div>
-                <div class="stat-card scroll-scale-in">
-                    <div class="stat-icon">🎓</div>
-                    <div class="stat-number">Voco</div>
-                    <div class="stat-label">Kutseharidus Keskus</div>
-                </div>
-                <div class="stat-card scroll-scale-in">
-                    <div class="stat-icon">🚀</div>
-                    <div class="stat-number">15</div>
-                    <div class="stat-label">Vanus</div>
-                </div>
-                <div class="stat-card scroll-scale-in">
-                    <div class="stat-icon">⭐</div>
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Projekte GitHubis</div>
-                </div>
+            <h2 class="about-title">
+              Bridging
+              <br>
+              <span class="about-title-gradient-1">Design</span> &
+              <br>
+              <span class="about-title-gradient-2">Code</span>
+            </h2>
+
+            <div class="about-text">
+              <p class="about-text-large">
+                I'm a <span class="text-bold">passionate full-stack developer</span> who
+                believes in creating digital experiences that not only look stunning but perform flawlessly.
+              </p>
+              <p>
+                With expertise in <span class="text-bold">modern web technologies</span> and a
+                keen eye for design, I transform ideas into reality.
+              </p>
             </div>
+
+            <div class="about-features">
+              <div class="about-feature-card">
+                <div class="about-feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                  </svg>
+                </div>
+                <h3>Clean Code</h3>
+                <p>Writing maintainable, scalable code following best practices</p>
+              </div>
+              <div class="about-feature-card">
+                <div class="about-feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="9" y1="3" x2="9" y2="21"/>
+                  </svg>
+                </div>
+                <h3>Design Focus</h3>
+                <p>Pixel-perfect implementations with attention to detail</p>
+              </div>
+              <div class="about-feature-card">
+                <div class="about-feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </div>
+                <h3>Performance</h3>
+                <p>Optimized for speed and exceptional user experience</p>
+              </div>
+              <div class="about-feature-card">
+                <div class="about-feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                </div>
+                <h3>Innovation</h3>
+                <p>Staying ahead with cutting-edge technologies</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-right">
+            <div class="about-stats">
+              <div class="about-stat-card">
+                <div class="about-stat-blob"></div>
+                <div class="about-stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </div>
+                <div class="about-stat-number" id="stat-projects">0</div>
+                <div class="about-stat-label">Projects Completed</div>
+              </div>
+              <div class="about-stat-card">
+                <div class="about-stat-blob"></div>
+                <div class="about-stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <div class="about-stat-number" id="stat-years">0</div>
+                <div class="about-stat-label">Years Experience</div>
+              </div>
+              <div class="about-stat-card">
+                <div class="about-stat-blob"></div>
+                <div class="about-stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                </div>
+                <div class="about-stat-number" id="stat-clients">0</div>
+                <div class="about-stat-label">Happy Clients</div>
+              </div>
+              <div class="about-stat-card">
+                <div class="about-stat-blob"></div>
+                <div class="about-stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="7"/>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                  </svg>
+                </div>
+                <div class="about-stat-number" id="stat-awards">0</div>
+                <div class="about-stat-label">Awards Won</div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="projects-background">
-            <div class="gradient-orb orb-4"></div>
-            <div class="gradient-orb orb-5"></div>
+    <!-- Work Section -->
+    <section id="work" class="work-section">
+      <div class="container">
+        <div class="work-header">
+          <div class="work-badge">
+            <svg class="work-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span>Selected Work</span>
+          </div>
+          <h2 class="work-title">
+            Featured
+            <br>
+            <span class="work-title-gradient">Projects</span>
+          </h2>
         </div>
-        <div class="container">
-            <h2 class="section-title scroll-fade-in">
-                <span class="section-number">02.</span>
-                <span class="gradient-text">Minu Projektid</span>
-            </h2>
-            
-            <!-- Featured Project - Perekas.ee -->
-            <div class="featured-project scroll-slide-up">
-                <div class="featured-project-content">
-                    <div class="featured-badge">
-                        <span>⭐</span> Peaprojekt
-                    </div>
-                    <h3 class="featured-title">Perekas.ee</h3>
-                    <p class="featured-description">
-                        Täielik SaaS platvorm perekondlike ülesannete ja sündmuste haldamiseks. 
-                        See on minu suurim projekt, mis on ehitatud Python Django backend'iga, 
-                        HTML/CSS frontend'iga ja PostgreSQL andmebaasiga. Platvorm on 
-                        deploy'itud Railway'le ja integreerib Stripe maksete süsteemi. 
-                        Platvorm võimaldab perekondadel koordineerida ülesandeid, planeerida 
-                        sündmusi ja hoida kõike ühes kohas.
-                    </p>
-                    <div class="featured-features">
-                        <div class="feature-item">
-                            <span class="feature-icon">🚀</span>
-                            <span>Skaleeritav arhitektuur</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon">🔒</span>
-                            <span>Turvaline autentimine</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon">📱</span>
-                            <span>Responsive disain</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon">⚡</span>
-                            <span>Kiire jõudlus</span>
-                        </div>
-                    </div>
-                    <div class="featured-tags">
-                        <span class="tag tag-large">Python</span>
-                        <span class="tag tag-large">Django</span>
-                        <span class="tag tag-large">HTML/CSS</span>
-                        <span class="tag tag-large">PostgreSQL</span>
-                        <span class="tag tag-large">Railway</span>
-                        <span class="tag tag-large">Stripe</span>
-                    </div>
-                    <div class="featured-links">
-                        <a href="https://perekas.ee" target="_blank" class="btn btn-primary btn-large">
-                            <span>Vaata Live</span>
-                            <span class="btn-arrow">→</span>
-                        </a>
-                        <a href="#" class="btn btn-secondary btn-large">Case Study</a>
-                    </div>
-                </div>
-                <div class="featured-project-visual scroll-fade-in-delay">
-                    <div class="project-showcase">
-                        <div class="showcase-screen">
-                            <img src="img/Screenshot 2025-12-04 at 15.06.02.png" alt="Perekas.ee Screenshot" class="project-screenshot">
-                        </div>
-                    </div>
-                </div>
+
+        <div class="work-grid">
+          <div class="work-card work-card-featured" data-index="0">
+            <div class="work-card-image-wrapper">
+              <img src="portfolio-website/public/modern-ecommerce-dashboard-dark-ui.jpg" alt="E-Commerce Platform" class="work-card-image" onerror="this.src='portfolio-website/public/placeholder.jpg'">
+              <div class="work-card-overlay"></div>
             </div>
-
-            <!-- Other Projects -->
-            <div class="other-projects scroll-fade-in">
-                <h3 class="subsection-title">Teised projektid</h3>
-                <div class="projects-grid">
-                    <div class="project-card-mini scroll-scale-in">
-                        <div class="project-card-icon">💼</div>
-                        <h4 class="project-card-title">E-Poe Platvorm</h4>
-                        <p class="project-card-desc">Täielik e-poe lahendus</p>
-                        <div class="project-card-tags">
-                            <span class="tag-mini">React</span>
-                            <span class="tag-mini">Node.js</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card-mini scroll-scale-in">
-                        <div class="project-card-icon">📋</div>
-                        <h4 class="project-card-title">Ülesannete Haldamine</h4>
-                        <p class="project-card-desc">Koostööalune rakendus</p>
-                        <div class="project-card-tags">
-                            <span class="tag-mini">Vue.js</span>
-                            <span class="tag-mini">Firebase</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card-mini scroll-scale-in">
-                        <div class="project-card-icon">🌤️</div>
-                        <h4 class="project-card-title">Ilmajuhtpaneel</h4>
-                        <p class="project-card-desc">Elegantne dashboard</p>
-                        <div class="project-card-tags">
-                            <span class="tag-mini">JavaScript</span>
-                            <span class="tag-mini">API</span>
-                        </div>
-                    </div>
+            <div class="work-card-content">
+              <div class="work-card-header">
+                <span class="work-card-category">Web Development</span>
+                <div class="work-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
                 </div>
+              </div>
+              <h3 class="work-card-title">E-Commerce Platform</h3>
+              <p class="work-card-description">A modern e-commerce solution with seamless checkout and inventory management</p>
+              <div class="work-card-tags">
+                <span class="work-card-tag">Next.js</span>
+                <span class="work-card-tag">TypeScript</span>
+                <span class="work-card-tag">Stripe</span>
+              </div>
             </div>
+            <div class="work-card-border"></div>
+          </div>
+
+          <div class="work-card work-card-featured" data-index="1">
+            <div class="work-card-image-wrapper">
+              <img src="portfolio-website/public/minimalist-brand-identity-design-dark.jpg" alt="Brand Identity System" class="work-card-image" onerror="this.src='portfolio-website/public/placeholder.jpg'">
+              <div class="work-card-overlay"></div>
+            </div>
+            <div class="work-card-content">
+              <div class="work-card-header">
+                <span class="work-card-category">Design</span>
+                <div class="work-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="work-card-title">Brand Identity System</h3>
+              <p class="work-card-description">Complete brand redesign for a sustainable fashion startup</p>
+              <div class="work-card-tags">
+                <span class="work-card-tag">Branding</span>
+                <span class="work-card-tag">UI/UX</span>
+                <span class="work-card-tag">Figma</span>
+              </div>
+            </div>
+            <div class="work-card-border"></div>
+          </div>
+
+          <div class="work-card" data-index="2">
+            <div class="work-card-image-wrapper">
+              <img src="portfolio-website/public/modern-analytics-dashboard-dark-theme.png" alt="SaaS Analytics Dashboard" class="work-card-image" onerror="this.src='portfolio-website/public/placeholder.jpg'">
+              <div class="work-card-overlay"></div>
+            </div>
+            <div class="work-card-content">
+              <div class="work-card-header">
+                <span class="work-card-category">Product Design</span>
+                <div class="work-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="work-card-title">SaaS Analytics Dashboard</h3>
+              <p class="work-card-description">Real-time data visualization platform with advanced reporting</p>
+              <div class="work-card-tags">
+                <span class="work-card-tag">React</span>
+                <span class="work-card-tag">D3.js</span>
+                <span class="work-card-tag">PostgreSQL</span>
+              </div>
+            </div>
+            <div class="work-card-border"></div>
+          </div>
+
+          <div class="work-card" data-index="3">
+            <div class="work-card-image-wrapper">
+              <img src="portfolio-website/public/mobile-fitness-app-interface-dark.jpg" alt="Mobile Fitness App" class="work-card-image" onerror="this.src='portfolio-website/public/placeholder.jpg'">
+              <div class="work-card-overlay"></div>
+            </div>
+            <div class="work-card-content">
+              <div class="work-card-header">
+                <span class="work-card-category">App Development</span>
+                <div class="work-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="work-card-title">Mobile Fitness App</h3>
+              <p class="work-card-description">Social fitness tracking with personalized workouts and challenges</p>
+              <div class="work-card-tags">
+                <span class="work-card-tag">React Native</span>
+                <span class="work-card-tag">Firebase</span>
+                <span class="work-card-tag">Redux</span>
+              </div>
+            </div>
+            <div class="work-card-border"></div>
+          </div>
         </div>
+
+        <div class="work-footer">
+          <button class="btn-work-all">
+            View All Projects
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="7" y1="17" x2="17" y2="7"/>
+              <polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title scroll-fade-in">
-                <span class="section-number">03.</span>
-                <span class="gradient-text">Oskused ja Tehnoloogiad</span>
-            </h2>
-            <div class="skills-grid">
-                <div class="skill-category scroll-slide-up">
-                    <h3 class="skill-category-title">Frontend</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">React</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Vue.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">TypeScript</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">CSS/SCSS</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category scroll-slide-up">
-                    <h3 class="skill-category-title">Backend</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Node.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 87%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Python</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 82%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">MongoDB</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">PostgreSQL</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 78%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category scroll-slide-up">
-                    <h3 class="skill-category-title">Tööriistad ja Muud</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Git</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 92%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Docker</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">AWS</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 70%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Figma</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="skills" class="skills-section">
+      <div class="container">
+        <div class="skills-header">
+          <div class="skills-badge">
+            <svg class="skills-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <span>Skills & Technologies</span>
+          </div>
+          <h2 class="skills-title">
+            My <span class="skills-title-gradient">Expertise</span>
+          </h2>
         </div>
+
+        <div class="skills-grid">
+          <div class="skills-left">
+            <div class="skill-item" data-level="95">
+              <div class="skill-header">
+                <span class="skill-name">React & Next.js</span>
+                <span class="skill-percentage">0%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill"></div>
+              </div>
+            </div>
+            <div class="skill-item" data-level="90">
+              <div class="skill-header">
+                <span class="skill-name">TypeScript</span>
+                <span class="skill-percentage">0%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill"></div>
+              </div>
+            </div>
+            <div class="skill-item" data-level="85">
+              <div class="skill-header">
+                <span class="skill-name">UI/UX Design</span>
+                <span class="skill-percentage">0%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill"></div>
+              </div>
+            </div>
+            <div class="skill-item" data-level="88">
+              <div class="skill-header">
+                <span class="skill-name">Node.js</span>
+                <span class="skill-percentage">0%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill"></div>
+              </div>
+            </div>
+            <div class="skill-item" data-level="92">
+              <div class="skill-header">
+                <span class="skill-name">Tailwind CSS</span>
+                <span class="skill-percentage">0%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill"></div>
+              </div>
+            </div>
+            <div class="skill-item" data-level="75">
+              <div class="skill-header">
+                <span class="skill-name">Three.js / WebGL</span>
+                <span class="skill-percentage">0%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-right">
+            <div class="skills-tech-card">
+              <div class="skills-tech-header">
+                <div class="skills-tech-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="3" y1="9" x2="21" y2="9"/>
+                    <line x1="9" y1="21" x2="9" y2="9"/>
+                  </svg>
+                </div>
+                <h3>Technologies I Work With</h3>
+              </div>
+
+              <div class="skills-tech-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">Framer Motion</span>
+                <span class="tech-tag">Three.js</span>
+                <span class="tech-tag">GraphQL</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">Figma</span>
+                <span class="tech-tag">Webflow</span>
+                <span class="tech-tag">Supabase</span>
+              </div>
+
+              <div class="skills-tech-footer">
+                <p>Always learning and exploring new technologies to stay at the forefront of web development and deliver cutting-edge solutions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title scroll-fade-in">
-                <span class="section-number">04.</span>
-                <span class="gradient-text">Võta Ühendust</span>
-            </h2>
-            <div class="contact-content">
-                <div class="contact-info scroll-slide-right">
-                    <h3>Teeme koostööd</h3>
-                    <p>
-                        Olen alati avatud uute projektide, loovate ideede või võimaluste arutamiseks 
-                        olla osa sinu visioonist. Võta julgelt ühendust!
-                    </p>
-                    <div class="contact-methods">
-                        <a href="mailto:rasmus@example.com" class="contact-method">
-                            <div class="contact-icon">✉</div>
-                            <span>rasmus@example.com</span>
-                        </a>
-                        <a href="https://linkedin.com" class="contact-method" target="_blank">
-                            <div class="contact-icon">💼</div>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://github.com" class="contact-method" target="_blank">
-                            <div class="contact-icon">🔗</div>
-                            <span>GitHub</span>
-                        </a>
-                    </div>
-                </div>
-                <form class="contact-form scroll-slide-left">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Sinu Nimi" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Sinu E-post" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Sinu Sõnum" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Saada Sõnum</button>
-                </form>
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-content">
+          <div class="contact-header">
+            <div class="contact-badge">
+              <svg class="contact-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              <span>Get in Touch</span>
             </div>
+            <h2 class="contact-title">
+              Let's Create
+              <br>
+              <span class="contact-title-gradient">Something Amazing</span>
+            </h2>
+          </div>
+
+          <p class="contact-description">
+            Have a project in mind? I'm always open to discussing new opportunities, creative ideas, or partnerships.
+          </p>
+
+          <a href="mailto:hello@yourportfolio.com" class="contact-email">
+            <div class="contact-email-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <span>hello@yourportfolio.com</span>
+            <svg class="contact-email-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </a>
+
+          <div class="contact-social">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-social-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-social-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="contact-social-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="contact-availability">
+            <div class="contact-availability-dot">
+              <span></span>
+            </div>
+            <span>Available for freelance projects</span>
+          </div>
+
+          <div class="contact-footer">
+            <p>© 2025 Your Portfolio. Crafted with passion and cutting-edge technology.</p>
+          </div>
         </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Rasmus Antsi. Ehitatud kirglikkusega ja kaasaegsete veebitehnoloogiatega.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
