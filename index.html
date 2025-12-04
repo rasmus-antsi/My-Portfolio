@@ -2,9 +2,12 @@
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio — Creative Developer & Designer</title>
-  <meta name="description" content="Award-winning creative developer specializing in immersive digital experiences and cutting-edge web solutions.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title data-en="Rasmus Antsi — Software Developer" data-et="Rasmus Antsi — Tarkvaraarendaja">Rasmus Antsi — Software Developer</title>
+  <meta name="description" content="Software developer from Tartu, Estonia. Creator of perekas.ee and passionate about building web applications with Python and Django.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&family=Geist+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -25,10 +28,13 @@
 
       <!-- Desktop Menu -->
       <div class="nav-menu-desktop">
-        <button class="nav-menu-item" onclick="scrollToSection('about')">About</button>
-        <button class="nav-menu-item" onclick="scrollToSection('work')">Work</button>
-        <button class="nav-menu-item" onclick="scrollToSection('skills')">Skills</button>
-        <button class="nav-menu-item" onclick="scrollToSection('contact')">Contact</button>
+        <button class="nav-menu-item" onclick="scrollToSection('about')" data-en="About" data-et="Minust">About</button>
+        <button class="nav-menu-item" onclick="scrollToSection('work')" data-en="Work" data-et="Tööd">Work</button>
+        <button class="nav-menu-item" onclick="scrollToSection('skills')" data-en="Skills" data-et="Oskused">Skills</button>
+        <button class="nav-menu-item" onclick="scrollToSection('contact')" data-en="Contact" data-et="Kontakt">Contact</button>
+        <button class="nav-lang-toggle" onclick="toggleLanguage()">
+          <span id="lang-display">EN</span>
+        </button>
       </div>
 
       <button class="nav-mobile-toggle" onclick="toggleMobileMenu()">
@@ -48,10 +54,13 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="mobile-menu">
     <div class="mobile-menu-content">
-      <button class="mobile-menu-item" onclick="scrollToSection('about')">About</button>
-      <button class="mobile-menu-item" onclick="scrollToSection('work')">Work</button>
-      <button class="mobile-menu-item" onclick="scrollToSection('skills')">Skills</button>
-      <button class="mobile-menu-item" onclick="scrollToSection('contact')">Contact</button>
+      <button class="mobile-menu-item" onclick="scrollToSection('about')" data-en="About" data-et="Minust">About</button>
+      <button class="mobile-menu-item" onclick="scrollToSection('work')" data-en="Work" data-et="Tööd">Work</button>
+      <button class="mobile-menu-item" onclick="scrollToSection('skills')" data-en="Skills" data-et="Oskused">Skills</button>
+      <button class="mobile-menu-item" onclick="scrollToSection('contact')" data-en="Contact" data-et="Kontakt">Contact</button>
+      <button class="mobile-menu-item" onclick="toggleLanguage()">
+        <span data-en="Switch to Estonian" data-et="Vaheta inglise keelele">Switch to Estonian</span>
+      </button>
     </div>
   </div>
 
@@ -67,41 +76,21 @@
     <section id="hero" class="hero-section">
       <div class="container">
         <div class="hero-content">
-          <div class="hero-badge" id="hero-badge">
-            <div class="hero-badge-icon">
-              <div class="hero-badge-dot"></div>
-            </div>
-            <span>Available for freelance work</span>
-            <svg class="hero-badge-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2L13.09 8.26L19 9L13.09 9.74L12 16L10.91 9.74L5 9L10.91 8.26L12 2Z"/>
-            </svg>
-          </div>
-
           <h1 class="hero-title" id="hero-title">
-            <span class="hero-title-gradient">Creative</span>
+            <span class="hero-title-gradient" data-en="Rasmus" data-et="Rasmus">Rasmus</span>
             <br>
-            <span>Developer</span>
+            <span data-en="Antsi" data-et="Antsi">Antsi</span>
             <br>
-            <span class="hero-title-primary">& Designer</span>
+            <span class="hero-title-primary" data-en="Software Developer" data-et="Tarkvaraarendaja">Software Developer</span>
           </h1>
 
           <p class="hero-description" id="hero-description">
-            Crafting <span class="text-primary">pixel-perfect</span> digital experiences that blend
-            <span class="text-primary">cutting-edge technology</span> with thoughtful design
+            <span data-en="Building" data-et="Loon">Building</span>
+            <span class="text-primary" data-en="web applications" data-et="veebirakendusi">web applications</span>
+            <span data-en="with" data-et="kasutades">with</span>
+            <span class="text-primary" data-en="Python & Django" data-et="Python'i ja Django't">Python & Django</span>
+            <span data-en="from Tartu, Estonia" data-et="Tartust, Eestist">from Tartu, Estonia</span>
           </p>
-
-          <div class="hero-buttons" id="hero-buttons">
-            <button class="btn-primary" onclick="scrollToSection('work')">
-              <span>View My Work</span>
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"/>
-                <polyline points="19 12 12 19 5 12"/>
-              </svg>
-            </button>
-            <button class="btn-secondary" onclick="scrollToSection('contact')">
-              Get in Touch
-            </button>
-          </div>
 
           <div class="hero-icons" id="hero-icons">
             <div class="hero-icon-item">
@@ -123,7 +112,7 @@
           </div>
 
           <div class="hero-scroll" id="hero-scroll">
-            <span>Scroll to explore</span>
+            <span data-en="Scroll to explore" data-et="Kerige, et avastada">Scroll to explore</span>
             <div class="hero-scroll-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="12" y1="5" x2="12" y2="19"/>
@@ -146,25 +135,31 @@
               <svg class="about-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polygon points="12 2 15.09 8.26 22 9.17 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.17 8.91 8.26 12 2"/>
               </svg>
-              <span>About Me</span>
+              <span data-en="About Me" data-et="Minust">About Me</span>
             </div>
 
             <h2 class="about-title">
-              Bridging
+              <span data-en="Building" data-et="Loon">Building</span>
               <br>
-              <span class="about-title-gradient-1">Design</span> &
+              <span class="about-title-gradient-1" data-en="Web" data-et="Veebi">Web</span>
               <br>
-              <span class="about-title-gradient-2">Code</span>
+              <span class="about-title-gradient-2" data-en="Applications" data-et="Rakendusi">Applications</span>
             </h2>
 
             <div class="about-text">
               <p class="about-text-large">
-                I'm a <span class="text-bold">passionate full-stack developer</span> who
-                believes in creating digital experiences that not only look stunning but perform flawlessly.
+                <span data-en="I'm a" data-et="Olen">I'm a</span>
+                <span class="text-bold" data-en="software developer" data-et="tarkvaraarendaja">software developer</span>
+                <span data-en="from Tartu, Estonia, with" data-et="Tartust, Eestist, kellel on">from Tartu, Estonia, with</span>
+                <span class="text-bold" data-en="8 years of experience" data-et="8 aasta kogemus">8 years of experience</span>
+                <span data-en="building web applications." data-et="veebirakenduste arendamisel.">building web applications.</span>
               </p>
               <p>
-                With expertise in <span class="text-bold">modern web technologies</span> and a
-                keen eye for design, I transform ideas into reality.
+                <span data-en="Creator of" data-et="Loonud">Creator of</span>
+                <span class="text-bold" data-en="perekas.ee" data-et="perekas.ee">perekas.ee</span>
+                <span data-en="and passionate about creating" data-et="ning kirglikult huvitatud">and passionate about creating</span>
+                <span class="text-bold" data-en="practical solutions" data-et="praktiliste lahenduste">practical solutions</span>
+                <span data-en="that make a difference." data-et="loomisest, mis teevad vahet.">that make a difference.</span>
               </p>
             </div>
 
@@ -172,40 +167,42 @@
               <div class="about-feature-card">
                 <div class="about-feature-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="16 18 22 12 16 6"/>
-                    <polyline points="8 6 2 12 8 18"/>
-                  </svg>
-                </div>
-                <h3>Clean Code</h3>
-                <p>Writing maintainable, scalable code following best practices</p>
-              </div>
-              <div class="about-feature-card">
-                <div class="about-feature-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <line x1="9" y1="3" x2="9" y2="21"/>
+                    <line x1="3" y1="9" x2="21" y2="9"/>
+                    <line x1="9" y1="21" x2="9" y2="9"/>
                   </svg>
                 </div>
-                <h3>Design Focus</h3>
-                <p>Pixel-perfect implementations with attention to detail</p>
+                <h3 data-en="Perekas.ee" data-et="Perekas.ee">Perekas.ee</h3>
+                <p data-en="Family management SaaS platform with subscription payments" data-et="Perehalduse SaaS platvorm tellimuspõhiste maksetega">Family management SaaS platform with subscription payments</p>
               </div>
               <div class="about-feature-card">
                 <div class="about-feature-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                   </svg>
                 </div>
-                <h3>Performance</h3>
-                <p>Optimized for speed and exceptional user experience</p>
+                <h3 data-en="SaaS Development" data-et="SaaS Arendus">SaaS Development</h3>
+                <p data-en="Building scalable SaaS applications with Django and Python" data-et="Skaalautuvate SaaS rakenduste loomine Django ja Python'iga">Building scalable SaaS applications with Django and Python</p>
               </div>
               <div class="about-feature-card">
                 <div class="about-feature-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                   </svg>
                 </div>
-                <h3>Innovation</h3>
-                <p>Staying ahead with cutting-edge technologies</p>
+                <h3 data-en="Payment Integration" data-et="Maksete Integreerimine">Payment Integration</h3>
+                <p data-en="Stripe integration for subscription-based SaaS platforms" data-et="Stripe integratsioon tellimuspõhiste SaaS platvormide jaoks">Stripe integration for subscription-based SaaS platforms</p>
+              </div>
+              <div class="about-feature-card">
+                <div class="about-feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                  </svg>
+                </div>
+                <h3 data-en="Cloud Deployment" data-et="Pilve Juurutamine">Cloud Deployment</h3>
+                <p data-en="Deploying SaaS applications on Railway and Cloudflare" data-et="SaaS rakenduste juurutamine Railway'le ja Cloudflare'ile">Deploying SaaS applications on Railway and Cloudflare</p>
               </div>
             </div>
           </div>
@@ -220,7 +217,7 @@
                   </svg>
                 </div>
                 <div class="about-stat-number" id="stat-projects">0</div>
-                <div class="about-stat-label">Projects Completed</div>
+                <div class="about-stat-label" data-en="Projects Created" data-et="Loodud Projekte">Projects Created</div>
               </div>
               <div class="about-stat-card">
                 <div class="about-stat-blob"></div>
@@ -231,30 +228,27 @@
                   </svg>
                 </div>
                 <div class="about-stat-number" id="stat-years">0</div>
-                <div class="about-stat-label">Years Experience</div>
+                <div class="about-stat-label" data-en="Years Experience" data-et="Aastaid Kogemust">Years Experience</div>
               </div>
               <div class="about-stat-card">
                 <div class="about-stat-blob"></div>
                 <div class="about-stat-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                   </svg>
                 </div>
-                <div class="about-stat-number" id="stat-clients">0</div>
-                <div class="about-stat-label">Happy Clients</div>
+                <div class="about-stat-number" id="stat-clients">1</div>
+                <div class="about-stat-label" data-en="Active SaaS" data-et="Aktiivne SaaS">Active SaaS</div>
               </div>
               <div class="about-stat-card">
                 <div class="about-stat-blob"></div>
                 <div class="about-stat-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="7"/>
-                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                   </svg>
                 </div>
-                <div class="about-stat-number" id="stat-awards">0</div>
-                <div class="about-stat-label">Awards Won</div>
+                <div class="about-stat-number" id="stat-awards">100+</div>
+                <div class="about-stat-label" data-en="Projects Over Years" data-et="Projekte Aastate Jooksul">Projects Over Years</div>
               </div>
             </div>
           </div>
@@ -270,129 +264,47 @@
             <svg class="work-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
             </svg>
-            <span>Selected Work</span>
+            <span data-en="Selected Work" data-et="Valitud Tööd">Selected Work</span>
           </div>
           <h2 class="work-title">
-            Featured
+            <span data-en="Featured" data-et="Esiletõstetud">Featured</span>
             <br>
-            <span class="work-title-gradient">Projects</span>
+            <span class="work-title-gradient" data-en="SaaS" data-et="SaaS">SaaS</span>
           </h2>
         </div>
 
         <div class="work-grid">
           <div class="work-card work-card-featured" data-index="0">
             <div class="work-card-image-wrapper">
-              <img src="portfolio-website/public/modern-ecommerce-dashboard-dark-ui.jpg" alt="E-Commerce Platform" class="work-card-image" onerror="this.src='portfolio-website/public/placeholder.jpg'">
+              <img src="img/Screenshot 2025-12-04 at 15.06.02.png" alt="Perekas.ee" class="work-card-image" onerror="this.src='portfolio-website/public/placeholder.jpg'">
               <div class="work-card-overlay"></div>
             </div>
             <div class="work-card-content">
               <div class="work-card-header">
-                <span class="work-card-category">Web Development</span>
+                <span class="work-card-category" data-en="SaaS Platform" data-et="SaaS Platvorm">SaaS Platform</span>
                 <div class="work-card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="7" y1="17" x2="17" y2="7"/>
-                    <polyline points="7 7 17 7 17 17"/>
-                  </svg>
+                  <a href="https://perekas.ee" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="7" y1="17" x2="17" y2="7"/>
+                      <polyline points="7 7 17 7 17 17"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
-              <h3 class="work-card-title">E-Commerce Platform</h3>
-              <p class="work-card-description">A modern e-commerce solution with seamless checkout and inventory management</p>
+              <h3 class="work-card-title">Perekas.ee</h3>
+              <p class="work-card-description" data-en="A comprehensive SaaS platform for family management, built with Django. Features subscription-based payments, user management, and modern web technologies." data-et="Terviklik SaaS platvorm perehalduseks, mis on loodud Django'ga. Sisaldab tellimuspõhiseid makseid, kasutajate haldust ja kaasaegseid veebitehnoloogiaid.">A comprehensive SaaS platform for family management, built with Django. Features subscription-based payments, user management, and modern web technologies.</p>
               <div class="work-card-tags">
-                <span class="work-card-tag">Next.js</span>
-                <span class="work-card-tag">TypeScript</span>
+                <span class="work-card-tag">Django</span>
+                <span class="work-card-tag">Python</span>
+                <span class="work-card-tag">HTML/CSS</span>
                 <span class="work-card-tag">Stripe</span>
-              </div>
-            </div>
-            <div class="work-card-border"></div>
-          </div>
-
-          <div class="work-card work-card-featured" data-index="1">
-            <div class="work-card-image-wrapper">
-              <img src="portfolio-website/public/minimalist-brand-identity-design-dark.jpg" alt="Brand Identity System" class="work-card-image" onerror="this.src='portfolio-website/public/placeholder.jpg'">
-              <div class="work-card-overlay"></div>
-            </div>
-            <div class="work-card-content">
-              <div class="work-card-header">
-                <span class="work-card-category">Design</span>
-                <div class="work-card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="7" y1="17" x2="17" y2="7"/>
-                    <polyline points="7 7 17 7 17 17"/>
-                  </svg>
-                </div>
-              </div>
-              <h3 class="work-card-title">Brand Identity System</h3>
-              <p class="work-card-description">Complete brand redesign for a sustainable fashion startup</p>
-              <div class="work-card-tags">
-                <span class="work-card-tag">Branding</span>
-                <span class="work-card-tag">UI/UX</span>
-                <span class="work-card-tag">Figma</span>
-              </div>
-            </div>
-            <div class="work-card-border"></div>
-          </div>
-
-          <div class="work-card" data-index="2">
-            <div class="work-card-image-wrapper">
-              <img src="portfolio-website/public/modern-analytics-dashboard-dark-theme.png" alt="SaaS Analytics Dashboard" class="work-card-image" onerror="this.src='portfolio-website/public/placeholder.jpg'">
-              <div class="work-card-overlay"></div>
-            </div>
-            <div class="work-card-content">
-              <div class="work-card-header">
-                <span class="work-card-category">Product Design</span>
-                <div class="work-card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="7" y1="17" x2="17" y2="7"/>
-                    <polyline points="7 7 17 7 17 17"/>
-                  </svg>
-                </div>
-              </div>
-              <h3 class="work-card-title">SaaS Analytics Dashboard</h3>
-              <p class="work-card-description">Real-time data visualization platform with advanced reporting</p>
-              <div class="work-card-tags">
-                <span class="work-card-tag">React</span>
-                <span class="work-card-tag">D3.js</span>
                 <span class="work-card-tag">PostgreSQL</span>
+                <span class="work-card-tag">Railway</span>
+                <span class="work-card-tag">Cloudflare</span>
               </div>
             </div>
             <div class="work-card-border"></div>
           </div>
-
-          <div class="work-card" data-index="3">
-            <div class="work-card-image-wrapper">
-              <img src="portfolio-website/public/mobile-fitness-app-interface-dark.jpg" alt="Mobile Fitness App" class="work-card-image" onerror="this.src='portfolio-website/public/placeholder.jpg'">
-              <div class="work-card-overlay"></div>
-            </div>
-            <div class="work-card-content">
-              <div class="work-card-header">
-                <span class="work-card-category">App Development</span>
-                <div class="work-card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="7" y1="17" x2="17" y2="7"/>
-                    <polyline points="7 7 17 7 17 17"/>
-                  </svg>
-                </div>
-              </div>
-              <h3 class="work-card-title">Mobile Fitness App</h3>
-              <p class="work-card-description">Social fitness tracking with personalized workouts and challenges</p>
-              <div class="work-card-tags">
-                <span class="work-card-tag">React Native</span>
-                <span class="work-card-tag">Firebase</span>
-                <span class="work-card-tag">Redux</span>
-              </div>
-            </div>
-            <div class="work-card-border"></div>
-          </div>
-        </div>
-
-        <div class="work-footer">
-          <button class="btn-work-all">
-            View All Projects
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="7" y1="17" x2="17" y2="7"/>
-              <polyline points="7 7 17 7 17 17"/>
-            </svg>
-          </button>
         </div>
       </div>
     </section>
@@ -407,10 +319,11 @@
               <line x1="8" y1="21" x2="16" y2="21"/>
               <line x1="12" y1="17" x2="12" y2="21"/>
             </svg>
-            <span>Skills & Technologies</span>
+            <span data-en="Skills & Technologies" data-et="Oskused ja Tehnoloogiad">Skills & Technologies</span>
           </div>
           <h2 class="skills-title">
-            My <span class="skills-title-gradient">Expertise</span>
+            <span data-en="My" data-et="Minu">My</span>
+            <span class="skills-title-gradient" data-en="Expertise" data-et="Oskused">Expertise</span>
           </h2>
         </div>
 
@@ -418,7 +331,7 @@
           <div class="skills-left">
             <div class="skill-item" data-level="95">
               <div class="skill-header">
-                <span class="skill-name">React & Next.js</span>
+                <span class="skill-name">Python</span>
                 <span class="skill-percentage">0%</span>
               </div>
               <div class="skill-bar">
@@ -427,7 +340,7 @@
             </div>
             <div class="skill-item" data-level="90">
               <div class="skill-header">
-                <span class="skill-name">TypeScript</span>
+                <span class="skill-name">Django</span>
                 <span class="skill-percentage">0%</span>
               </div>
               <div class="skill-bar">
@@ -436,25 +349,16 @@
             </div>
             <div class="skill-item" data-level="85">
               <div class="skill-header">
-                <span class="skill-name">UI/UX Design</span>
+                <span class="skill-name">HTML/CSS</span>
                 <span class="skill-percentage">0%</span>
               </div>
               <div class="skill-bar">
                 <div class="skill-bar-fill"></div>
               </div>
             </div>
-            <div class="skill-item" data-level="88">
+            <div class="skill-item" data-level="80">
               <div class="skill-header">
-                <span class="skill-name">Node.js</span>
-                <span class="skill-percentage">0%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-bar-fill"></div>
-              </div>
-            </div>
-            <div class="skill-item" data-level="92">
-              <div class="skill-header">
-                <span class="skill-name">Tailwind CSS</span>
+                <span class="skill-name">PostgreSQL</span>
                 <span class="skill-percentage">0%</span>
               </div>
               <div class="skill-bar">
@@ -463,7 +367,16 @@
             </div>
             <div class="skill-item" data-level="75">
               <div class="skill-header">
-                <span class="skill-name">Three.js / WebGL</span>
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-percentage">0%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill"></div>
+              </div>
+            </div>
+            <div class="skill-item" data-level="70">
+              <div class="skill-header">
+                <span class="skill-name">Payment Integration</span>
                 <span class="skill-percentage">0%</span>
               </div>
               <div class="skill-bar">
@@ -482,29 +395,23 @@
                     <line x1="9" y1="21" x2="9" y2="9"/>
                   </svg>
                 </div>
-                <h3>Technologies I Work With</h3>
+                <h3 data-en="Technologies I Work With" data-et="Tehnoloogiad, Mida Kasutan">Technologies I Work With</h3>
               </div>
 
               <div class="skills-tech-tags">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Next.js</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Tailwind CSS</span>
-                <span class="tech-tag">Framer Motion</span>
-                <span class="tech-tag">Three.js</span>
-                <span class="tech-tag">GraphQL</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Django</span>
+                <span class="tech-tag">HTML/CSS</span>
+                <span class="tech-tag">JavaScript</span>
                 <span class="tech-tag">PostgreSQL</span>
-                <span class="tech-tag">MongoDB</span>
-                <span class="tech-tag">Docker</span>
-                <span class="tech-tag">AWS</span>
-                <span class="tech-tag">Figma</span>
-                <span class="tech-tag">Webflow</span>
-                <span class="tech-tag">Supabase</span>
+                <span class="tech-tag">Stripe</span>
+                <span class="tech-tag">Railway</span>
+                <span class="tech-tag">Cloudflare</span>
+                <span class="tech-tag">Git</span>
               </div>
 
               <div class="skills-tech-footer">
-                <p>Always learning and exploring new technologies to stay at the forefront of web development and deliver cutting-edge solutions.</p>
+                <p data-en="Always learning and exploring new technologies to build better web applications and solve real-world problems." data-et="Pidevalt õppimas ja uusi tehnoloogiaid avastamas, et luua paremaid veebirakendusi ja lahendada päriselulisi probleeme.">Always learning and exploring new technologies to build better web applications and solve real-world problems.</p>
               </div>
             </div>
           </div>
@@ -521,27 +428,27 @@
               <svg class="contact-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
               </svg>
-              <span>Get in Touch</span>
+              <span data-en="Get in Touch" data-et="Võta Ühendust">Get in Touch</span>
             </div>
             <h2 class="contact-title">
-              Let's Create
+              <span data-en="Let's Create" data-et="Loome">Let's Create</span>
               <br>
-              <span class="contact-title-gradient">Something Amazing</span>
+              <span class="contact-title-gradient" data-en="Something Amazing" data-et="Midagi Suurepärast">Something Amazing</span>
             </h2>
           </div>
 
           <p class="contact-description">
-            Have a project in mind? I'm always open to discussing new opportunities, creative ideas, or partnerships.
+            <span data-en="Have a project in mind? I'm always open to discussing new opportunities, creative ideas, or partnerships." data-et="Kas sul on projekt mõttes? Olen alati avatud uute võimaluste, loominguliste ideede või partnerluste arutamiseks.">Have a project in mind? I'm always open to discussing new opportunities, creative ideas, or partnerships.</span>
           </p>
 
-          <a href="mailto:hello@yourportfolio.com" class="contact-email">
+          <a href="mailto:rasmus@antsi.ee" class="contact-email">
             <div class="contact-email-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
             </div>
-            <span>hello@yourportfolio.com</span>
+            <span>rasmus@antsi.ee</span>
             <svg class="contact-email-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="22" y1="2" x2="11" y2="13"/>
               <polygon points="22 2 15 22 11 13 2 9 22 2"/>
@@ -568,15 +475,8 @@
             </a>
           </div>
 
-          <div class="contact-availability">
-            <div class="contact-availability-dot">
-              <span></span>
-            </div>
-            <span>Available for freelance projects</span>
-          </div>
-
           <div class="contact-footer">
-            <p>© 2025 Your Portfolio. Crafted with passion and cutting-edge technology.</p>
+            <p data-en="© 2025 Rasmus Antsi. Software Developer from Tartu, Estonia." data-et="© 2025 Rasmus Antsi. Tarkvaraarendaja Tartust, Eestist.">© 2025 Rasmus Antsi. Software Developer from Tartu, Estonia.</p>
           </div>
         </div>
       </div>

@@ -49,15 +49,22 @@ let cursorX = 0;
 let cursorY = 0;
 let isPointer = false;
 
-if (window.matchMedia('(min-width: 768px)').matches) {
+// Check if device supports hover (desktop)
+const isDesktop = window.matchMedia('(min-width: 768px)').matches && window.matchMedia('(hover: hover)').matches;
+
+if (customCursor && customCursorDot && isDesktop) {
   document.addEventListener('mousemove', (e) => {
     cursorX = e.clientX;
     cursorY = e.clientY;
     
-    customCursor.style.left = `${cursorX}px`;
-    customCursor.style.top = `${cursorY}px`;
-    customCursorDot.style.left = `${cursorX}px`;
-    customCursorDot.style.top = `${cursorY}px`;
+    if (customCursor) {
+      customCursor.style.left = `${cursorX}px`;
+      customCursor.style.top = `${cursorY}px`;
+    }
+    if (customCursorDot) {
+      customCursorDot.style.left = `${cursorX}px`;
+      customCursorDot.style.top = `${cursorY}px`;
+    }
     
     const target = e.target;
     const computedStyle = window.getComputedStyle(target);
@@ -68,19 +75,22 @@ if (window.matchMedia('(min-width: 768px)').matches) {
                        target.closest('a');
     
     if (isClickable && !isPointer) {
-      customCursor.classList.add('pointer');
+      customCursor?.classList.add('pointer');
       isPointer = true;
     } else if (!isClickable && isPointer) {
-      customCursor.classList.remove('pointer');
+      customCursor?.classList.remove('pointer');
       isPointer = false;
     }
   });
 }
 
-// Particles Background
+// Particles Background - Optimized for mobile
 const canvas = document.getElementById('particles-canvas');
 if (canvas) {
   const ctx = canvas.getContext('2d');
+  
+  // Detect mobile device
+  const isMobile = window.innerWidth <= 767 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   
   const resizeCanvas = () => {
     canvas.width = window.innerWidth;
@@ -91,7 +101,8 @@ if (canvas) {
   window.addEventListener('resize', resizeCanvas);
   
   const particles = [];
-  const particleCount = 50;
+  // Reduce particle count on mobile for better performance
+  const particleCount = isMobile ? 20 : 50;
   const mouse = { x: 0, y: 0 };
   
   // Create particles
@@ -111,9 +122,21 @@ if (canvas) {
     mouse.y = e.clientY;
   });
   
-  // Animation loop
-  const animate = () => {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+  // Animation loop - optimized frame rate for mobile
+  let lastTime = performance.now();
+  const targetFPS = isMobile ? 30 : 60;
+  const frameInterval = 1000 / targetFPS;
+  
+  const animate = (currentTime) => {
+    const elapsed = currentTime - lastTime;
+    
+    if (elapsed < frameInterval) {
+      requestAnimationFrame(animate);
+      return;
+    }
+    lastTime = currentTime;
+    
+    ctx.fillStyle = isMobile ? 'rgba(0, 0, 0, 0.1)' : 'rgba(0, 0, 0, 0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     particles.forEach((particle, i) => {
@@ -125,52 +148,55 @@ if (canvas) {
       if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
       if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
       
-      // Mouse interaction
-      const dx = mouse.x - particle.x;
-      const dy = mouse.y - particle.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      
-      if (distance < 100) {
-        particle.vx -= dx * 0.0001;
-        particle.vy -= dy * 0.0001;
+      // Mouse interaction - skip on mobile for performance
+      if (!isMobile) {
+        const dx = mouse.x - particle.x;
+        const dy = mouse.y - particle.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 100) {
+          particle.vx -= dx * 0.0001;
+          particle.vy -= dy * 0.0001;
+        }
       }
       
       // Draw particle
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(82, 255, 168, 0.5)`;
+      ctx.fillStyle = `rgba(82, 255, 168, ${isMobile ? 0.3 : 0.5})`;
       ctx.fill();
       
-      // Draw connections
-      particles.slice(i + 1).forEach((otherParticle) => {
-        const dx = particle.x - otherParticle.x;
-        const dy = particle.y - otherParticle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance < 150) {
-          ctx.beginPath();
-          ctx.moveTo(particle.x, particle.y);
-          ctx.lineTo(otherParticle.x, otherParticle.y);
-          ctx.strokeStyle = `rgba(82, 255, 168, ${0.2 * (1 - distance / 150)})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      });
+      // Draw connections - skip on mobile for performance
+      if (!isMobile) {
+        particles.slice(i + 1).forEach((otherParticle) => {
+          const dx = particle.x - otherParticle.x;
+          const dy = particle.y - otherParticle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 150) {
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(otherParticle.x, otherParticle.y);
+            ctx.strokeStyle = `rgba(82, 255, 168, ${0.2 * (1 - distance / 150)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        });
+      }
     });
     
     requestAnimationFrame(animate);
   };
   
-  animate();
+  // Start animation
+  requestAnimationFrame(animate);
 }
 
 // Hero Section Animations
 window.addEventListener('load', () => {
   setTimeout(() => {
-    document.getElementById('hero-badge')?.classList.add('visible');
     document.getElementById('hero-title')?.classList.add('visible');
     document.getElementById('hero-description')?.classList.add('visible');
-    document.getElementById('hero-buttons')?.classList.add('visible');
     document.getElementById('hero-icons')?.classList.add('visible');
     document.getElementById('hero-scroll')?.classList.add('visible');
   }, 100);
@@ -196,6 +222,49 @@ sections.forEach((section) => {
   observer.observe(section);
 });
 
+// Language Switching
+let currentLanguage = 'en';
+
+function toggleLanguage() {
+  currentLanguage = currentLanguage === 'en' ? 'et' : 'en';
+  updateLanguage();
+  localStorage.setItem('language', currentLanguage);
+}
+
+function updateLanguage() {
+  document.documentElement.lang = currentLanguage;
+  
+  // Update all elements with data-en and data-et attributes
+  document.querySelectorAll('[data-en][data-et]').forEach((element) => {
+    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+      element.value = element.getAttribute(`data-${currentLanguage}`);
+    } else {
+      element.textContent = element.getAttribute(`data-${currentLanguage}`);
+    }
+  });
+  
+  // Update title
+  const title = document.querySelector('title');
+  if (title && title.hasAttribute('data-en')) {
+    title.textContent = title.getAttribute(`data-${currentLanguage}`);
+  }
+  
+  // Update lang display
+  const langDisplay = document.getElementById('lang-display');
+  if (langDisplay) {
+    langDisplay.textContent = currentLanguage.toUpperCase();
+  }
+}
+
+// Load saved language preference
+window.addEventListener('load', () => {
+  const savedLang = localStorage.getItem('language');
+  if (savedLang === 'et' || savedLang === 'en') {
+    currentLanguage = savedLang;
+  }
+  updateLanguage();
+});
+
 // About Section Counting Animation
 const aboutSection = document.getElementById('about');
 const statProjects = document.getElementById('stat-projects');
@@ -206,7 +275,7 @@ const statAwards = document.getElementById('stat-awards');
 const aboutObserver = new IntersectionObserver(
   ([entry]) => {
     if (entry.isIntersecting) {
-      const targetValues = { projects: 50, years: 8, clients: 30, awards: 15 };
+      const targetValues = { projects: 100, years: 8, clients: 1, awards: 100 };
       const duration = 2000;
       const steps = 60;
       const interval = duration / steps;
@@ -217,7 +286,8 @@ const aboutObserver = new IntersectionObserver(
         const progress = step / steps;
 
         if (statProjects) {
-          statProjects.textContent = Math.floor(targetValues.projects * progress);
+          const value = Math.floor(targetValues.projects * progress);
+          statProjects.textContent = value >= 100 ? '100+' : value;
         }
         if (statYears) {
           statYears.textContent = Math.floor(targetValues.years * progress);
@@ -226,15 +296,16 @@ const aboutObserver = new IntersectionObserver(
           statClients.textContent = Math.floor(targetValues.clients * progress);
         }
         if (statAwards) {
-          statAwards.textContent = Math.floor(targetValues.awards * progress);
+          const value = Math.floor(targetValues.awards * progress);
+          statAwards.textContent = value >= 100 ? '100+' : value;
         }
 
         if (step >= steps) {
           clearInterval(timer);
-          if (statProjects) statProjects.textContent = targetValues.projects;
+          if (statProjects) statProjects.textContent = '100+';
           if (statYears) statYears.textContent = targetValues.years;
           if (statClients) statClients.textContent = targetValues.clients;
-          if (statAwards) statAwards.textContent = targetValues.awards;
+          if (statAwards) statAwards.textContent = '100+';
         }
       }, interval);
 
